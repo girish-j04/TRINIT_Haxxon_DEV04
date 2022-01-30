@@ -15,7 +15,7 @@ console.log(indicate);
 var email = keys.email;
 var pass = keys.pass;
 var head = keys.head;
-
+var email_count = keys.email_count;
 
 var browser;
 var page;
@@ -164,36 +164,99 @@ async function hackathon() {
       await page.waitFor(2000);
       await page.waitForSelector("div._2foTEDMhzh_Jsee7capEtt", {timeout: 5000});
       await page.click("div._2foTEDMhzh_Jsee7capEtt");
-
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+        console.log(err);
     }
+//       var mail = await page.evaluate(async () => {
+//         email = document.querySelector('[data-log-name="PersonName"]')
+//           .innerText;
+
+//         return email;
+//       });
+//       var Email = mail;
+
+//     } catch (error) {
+//       console.log(error);
+//     }
+//     await page.waitForSelector('button[data-content="LinkedIn"]');
+
+//     await page.click('button[data-content="LinkedIn"]');
+
+//     console.log("Almost there")
+
+//    try { await page.waitForSelector('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
+//     await page.click('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
+//     await page.waitFor(4000);
+
+//     let pages = await browser.pages();
+
+//     // const aHandle = await pages[2].evaluateHandle(() => document.body);
+
+//     // const resultHandle = await pages[2].evaluateHandle(body => 
+//     // body.innerHTML, aHandle);
+
+//     // let jsonValue = await resultHandle.jsonValue();
+
+//     const linkedUrl = await pages[2].url();
+//     console.log("Your linkedin url for " + Email + " is: "+linkedUrl.split('?')[0])
+//     pages[2].close()
+//   } catch(err){
+//       console.log('There is no LinkedIn Account associated with the provided Email ID.')
+//   }
+  
+  var i = 1
+  for(i=1; i< email_count; i++) {
+    console.log("going to " + "contact " + i);
+    await page.waitFor(2000);
+    var isOn = await isOnline()
+    if(isOn == false){
+      sleep(180000);
+      isOn = await isOnline()
+    }
+    if(isOn){
+    await page.waitForSelector('i[data-icon-name="Down"]');
+    await page.click('i[data-icon-name="Down"]');
+    console.log("wait for page load for 2 seconds");
+    await page.waitFor(2000);
+    var mail = await page.evaluate(async () => {
+        email = document.querySelector('[data-log-name="PersonName"]')
+          .innerText;
+
+        return email;
+      });
+      var Email = mail;
+    }
+  
     await page.waitForSelector('button[data-content="LinkedIn"]');
-
-    await page.click('button[data-content="LinkedIn"]');
-
-    console.log("Almost there")
-
+      // await page.waitFor(7000)
+      console.log("selecting linkedin tab");
+      await page.click('button[data-content="LinkedIn"]');
+  
+      console.log("Almost there...");
+  
+  
    try { await page.waitForSelector('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
     await page.click('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
     await page.waitFor(4000);
 
     let pages = await browser.pages();
 
-    const aHandle = await pages[2].evaluateHandle(() => document.body);
+    // const aHandle = await pages[2].evaluateHandle(() => document.body);
 
-    const resultHandle = await pages[2].evaluateHandle(body => 
-    body.innerHTML, aHandle);
+    // const resultHandle = await pages[2].evaluateHandle(body => 
+    // body.innerHTML, aHandle);
 
-    let jsonValue = await resultHandle.jsonValue();
+    // let jsonValue = await resultHandle.jsonValue();
 
     const linkedUrl = await pages[2].url();
-    console.log("Your linkedin url is : "+linkedUrl.split('?')[0])
-    return
+    console.log("Your linkedin url for " + Email + " is: "+linkedUrl.split('?')[0])
+    pages[2].close()
+    //return
   } catch(err){
       console.log('There is no LinkedIn Account associated with the provided Email ID.')
   }
-    
+  
+  } 
 
 
   } 
