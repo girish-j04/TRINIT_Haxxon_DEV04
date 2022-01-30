@@ -1,8 +1,7 @@
-# **Team-HaxxOn DEV04**
+# **Team-HaxxOn DEV04 Tri-NIT Hackathon**
 
 ### **Problem Statement: Derive a user’s LinkedIn Profile URL as Output using only the linked e-mail address as input.**
 ### We solved this PS using a CLI through node.js
-</br>
 
 ### Our approach is to use Outlook to retrieve a person's LinkedIn url through their associated email id.
 </br>
@@ -39,3 +38,11 @@
 
 ## **Drive Link for the live implementation:**
 https://drive.google.com/drive/folders/1Ejx1wosxo3HuqRobz8ALrFjK3gGurQi8?usp=sharing 
+
+</br>
+
+# **Team Members**
+
+- ## Olan Pinto
+- ## Vaishnav Ajai
+- ## Girish Jeswani
