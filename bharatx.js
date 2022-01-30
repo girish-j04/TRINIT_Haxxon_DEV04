@@ -167,45 +167,9 @@ async function hackathon() {
     } catch (err) {
         console.log(err);
     }
-//       var mail = await page.evaluate(async () => {
-//         email = document.querySelector('[data-log-name="PersonName"]')
-//           .innerText;
-
-//         return email;
-//       });
-//       var Email = mail;
-
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     await page.waitForSelector('button[data-content="LinkedIn"]');
-
-//     await page.click('button[data-content="LinkedIn"]');
-
-//     console.log("Almost there")
-
-//    try { await page.waitForSelector('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
-//     await page.click('button[aria-label="See full profile on LinkedIn. Opens in a new browser tab"]')
-//     await page.waitFor(4000);
-
-//     let pages = await browser.pages();
-
-//     // const aHandle = await pages[2].evaluateHandle(() => document.body);
-
-//     // const resultHandle = await pages[2].evaluateHandle(body => 
-//     // body.innerHTML, aHandle);
-
-//     // let jsonValue = await resultHandle.jsonValue();
-
-//     const linkedUrl = await pages[2].url();
-//     console.log("Your linkedin url for " + Email + " is: "+linkedUrl.split('?')[0])
-//     pages[2].close()
-//   } catch(err){
-//       console.log('There is no LinkedIn Account associated with the provided Email ID.')
-//   }
   
   var i = 1
-  for(i=1; i< email_count; i++) {
+  for(i=1; i<= email_count; i++) {
     console.log("going to " + "contact " + i);
     await page.waitFor(2000);
     var isOn = await isOnline()
@@ -240,13 +204,6 @@ async function hackathon() {
     await page.waitFor(4000);
 
     let pages = await browser.pages();
-
-    // const aHandle = await pages[2].evaluateHandle(() => document.body);
-
-    // const resultHandle = await pages[2].evaluateHandle(body => 
-    // body.innerHTML, aHandle);
-
-    // let jsonValue = await resultHandle.jsonValue();
 
     const linkedUrl = await pages[2].url();
     console.log("Your linkedin url for " + Email + " is: "+linkedUrl.split('?')[0])
